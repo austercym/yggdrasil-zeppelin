@@ -1,0 +1,594 @@
+%angular
+<div  id="submit-searchChapsSanction-container">
+
+    <form name="searchChapsSanctionForm" id="post-searchChapsSanction-form">
+        <div class= "form-group">
+            <div class="row">
+                <!-- Payment Id -->
+                <div class="col-xs-3 form-group" >
+                    <label for="paymentId">Payment Id: </label>
+                    <input type="text" name="paymentId" class="form-control" id="paymentId" ng-model="data.paymentId">
+                </div>
+
+                <!-- Sanction Request Id -->
+                <div class="col-xs-3 form-group" >
+                    <label for="sanctionRequestId">Sanction Request Id: </label>
+                    <input type="text" name="fpid" class="form-control" id="sanctionRequestId" ng-model="data.sanctionRequestId">
+                </div>
+
+                <!-- Payment System -->
+                <div class="col-xs-3 form-group">
+                    <label for="paymentSystem">Payment System: </label>
+                    <select class="form-control" id="paymentSystem" ng-model="data.paymentSystem">
+                        <option value="0">-- Select an option --</option>
+                        <option value="FPS">FPS</option>
+                        <option value="CHAPS">Chaps</option>
+                    </select>
+                </div>
+
+                <!--div class="col-xs-3 form-group">
+                    <label for="scheme">Scheme: </label>
+                    <select class="form-control" id="scheme" ng-model="data.scheme">
+                        <option value="0">-- Select an option --</option>
+                        <option value="pacs.008.001.07">pacs_008_001_07</option>
+                        <option value="pacs.009.001.07">pacs_009_001_07</option>
+                    </select>
+                </div-->
+            </div>
+
+            <div class="row">
+                <!-- Direction -->
+                <div class="col-xs-3 form-group">
+                    <label for="direction">Direction: </label>
+                    <select class="form-control" id="direction" ng-model="data.direction">
+                        <option value="0">-- Select an option --</option>
+                        <option value="I">Inbound</option>
+                        <option value="O">Outbound</option>
+                    </select>
+                </div>
+
+                <!-- Credit / Debit -->
+                <div class="col-xs-3 form-group">
+                    <label for="creditDebit">Credit / Debit: </label>
+                    <select class="form-control" id="creditDebit" ng-model="data.creditDebit">
+                        <option value="0">-- Select an option --</option>
+                        <option value="D">Debit</option>
+                        <option value="C">Credit</option>
+                    </select>
+                </div>
+
+                <!-- Settlement Amount -->
+                <div class="col-xs-3 form-group" >
+                    <label for="settlementAmount">Settlement Amount: </label>
+                    <input type="text" name="settlementAmount" class="form-control" id="settlementAmount" ng-model="data.settlementAmount">
+                </div>
+
+                <!-- Currency -->
+                <div class="col-xs-3 form-group" >
+                    <label for="currency">Currency: </label>
+                    <input type="text" name="currency" class="form-control" id="currency" ng-model="data.currency">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <!-- Counterparty Name -->
+                <div class="col-xs-3 form-group" >
+                    <label for="counterpartyName">Counterparty Name: </label>
+                    <input type="text" name="counterpartyName" class="form-control" id="counterpartyName" ng-model="data.counterpartyName">
+                </div>
+
+                <!-- Counterparty Sort Code -->
+                <div class="col-xs-3 form-group" >
+                    <label for="counterpartySortcode">Counterparty Sort Code: </label>
+                    <input type="text" name="counterpartySortcode" class="form-control" id="counterpartySortcode" ng-model="data.counterpartySortcode">
+                </div>
+
+                <!-- Counterparty Account -->
+                <div class="col-xs-3 form-group" >
+                    <label for="counterpartyAccount">Counterparty Account: </label>
+                    <input type="text" name="counterpartyAccount" class="form-control" id="counterpartyAccount" ng-model="data.counterpartyAccount">
+                </div>
+
+                <!-- Counterparty Address -->
+                <div class="col-xs-3 form-group" >
+                    <label for="counterpartyAddress">Counterparty Address: </label>
+                    <input type="text" name="counterpartyAddress" class="form-control" id="counterpartyAddress" ng-model="data.counterpartyAddress">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <!-- Customer Name -->
+                <div class="col-xs-3 form-group" >
+                    <label for="customerName">Customer Name: </label>
+                    <input type="text" name="customerName" class="form-control" id="customerName" ng-model="data.customerName">
+                </div>
+
+                <!-- Customer Sortcode -->
+                <div class="col-xs-3 form-group" >
+                    <label for="customerSortcode">Customer Sort Code: </label>
+                    <input type="text" name="customerSortcode" class="form-control" id="customerSortcode" ng-model="data.customerSortcode">
+                </div>
+
+                <!-- Customer Account -->
+                <div class="col-xs-3 form-group" >
+                    <label for="customerAccount">Customer Account: </label>
+                    <input type="text" name="customerAccount" class="form-control" id="customerAccount" ng-model="data.customerAccount">
+                </div>
+                
+                 <!-- Status -->
+                <div class="col-xs-3 form-group">
+                    <label for="sanctionsts">Sanction Status: </label>
+                    <select class="form-control" id="sanctionsts" ng-model="data.sanctionsts">
+                        <option value="0">-- Select an option --</option>
+                        <option value="FAIL">Fail</option>        
+                        <option value="PASS">Pass</option>                        
+                        <option value="RECEIVED">Received</option>
+                        <option value="SEARCH_COMPLETED">Search Completed</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <!-- Start Date -->
+                <div class="col-xs-3 form-group" >
+                    <label for="startDate">Start Date: </label>
+                    <input type="text" name="startDate" class="form-control" id="startDate" ng-model="data.startDate" placeholder="yyyy-mm-dd">
+                </div>
+
+                <!-- Start Time -->
+                <div class="col-xs-3 form-group" >
+                    <label for="startTime">Start Time: </label>
+                    <input type="text" name="startTime" class="form-control" id="startTime" ng-model="data.startTime" placeholder="hh:mm:ss">
+                </div>
+
+                <!-- End Date -->
+                <div class="col-xs-3 form-group" >
+                    <label for="endDate">End Date: </label>
+                    <input type="text" name="endDate" class="form-control" id="endDate" ng-model="data.endDate" placeholder="yyyy-mm-dd">
+                </div>
+
+                <!-- End Time -->
+                <div class="col-xs-3 form-group" >
+                    <label for="endTime">End Time: </label>
+                    <input type="text" name="endTime" class="form-control" id="endTime" ng-model="data.endTime" placeholder="hh:mm:ss">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" onclick="submit_search_sanction()" ng-disabled="disableSubmitButton()">{{submit.text}}</button>
+        </div>
+        
+    </form>
+
+    <div class="clear-form-button">
+      <button class="btn" ng-click="clearForm()">Clear Form</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style media="screen" type="text/css">
+
+.searchChapsSanction-submit-status-container {
+    background-color: #def9db;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.searchChapsSanction-submit-status-container-failed{
+    background-color: #900C3F;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    color: #f2f2f2;
+}
+
+.result-header{
+    margin-bottom: 15px;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+#submit-searchChapsSanction-container{
+    margin-top:20px; 
+    margin-bottom:20px;
+    width: 98%;
+}
+
+
+.clear-form-button{
+    display: inline;
+    float: right;
+}
+
+.invalid-feedback{
+    width: 100%;
+    margin-top: .55rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+</style>
+
+
+
+
+
+<script>
+
+    angular.element(document).ready(function () {
+        console.log('init search chaps sanction');
+        init_searchChapsSanction();
+    });
+
+    function init_searchChapsSanction() {
+        var scope = angular.element($("#submit-searchChapsSanction-container")).scope();
+        if (typeof(scope.result)=== "undefined") {
+            scope.result = {
+                text: "",
+                payment: "",
+                success: false
+            };
+
+            show = false;
+            scope.submit = {
+                inprogress: false,
+                text: 'Search Sanction'
+            };
+
+            scope.data = {};
+
+            scope.generateInputValues = function(scope) {
+                console.log('Initializing input values');
+                scope.data.paymentSystem = "0";
+                scope.data.direction = "0";
+                scope.data.creditDebit = "0";
+                scope.data.scheme = "0";
+                scope.data.sanctionsts = "0";
+            };
+
+            scope.generateInputValues(scope);
+
+            scope.clearForm = function(){
+                var scope = angular.element($("#submit-searchChapsSanction-container")).scope();
+                scope.data = {};
+                scope.generateInputValues(scope);
+            };
+
+            function getObjStr(field, value, exactMatch){
+                var result = '{"field":';
+                result = result.concat('"').concat(field).concat('", "value":"').concat(value).concat('", "exactMatch":').concat(exactMatch).concat('}');
+                return result;
+            }
+
+            scope.getActualDate = function() {
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd = '0'+dd
+                } 
+
+                if(mm<10) {
+                    mm = '0'+mm
+                } 
+
+                today = yyyy + '-' + mm + '-' + dd;
+                console.log('Actual date generated: ' + today);
+                return today;
+            };
+
+            scope.validateDate = function(dateStr) {
+                 if(!/^\d{4}\-\d{2}\-\d{2}$/.test(dateStr))
+                    return false;
+
+                var params = dateStr.split('-');
+
+                var year = parseInt(params[0]);
+                var month = parseInt(params[1]);
+                var day = parseInt(params[2]);
+
+                if (year < 2000 || year > 2050 || month < 1 || month > 12 || day < 0 || day > 31)
+                    return false;
+
+                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                    monthLength[1] = 29;
+
+                if (day > monthLength[month -1])
+                    return false;
+
+                return true;
+            };
+
+            scope.validateTime = function(timeStr) {
+                if(!/^\d{2}:\d{2}:\d{2}$/.test(timeStr))
+                    return false;
+
+                var params = timeStr.split(':');
+
+                var hour = parseInt(params[0]);
+                var minute = parseInt(params[1]);
+                var second = parseInt(params[2]);
+
+                if (hour < 0 || hour > 23 || minute < 0 || minute > 59 || second < 0 || second > 59)
+                    return false;
+
+                return true;
+            };
+
+            scope.disableSubmitButton = function() {
+                var scope = angular.element($("#submit-searchChapsSanction-container")).scope();
+                var result = false;
+
+                if (scope.data.startDate != null && scope.data.startDate != undefined && scope.data.startDate != '') {
+                    if (!scope.validateDate(scope.data.startDate)) {
+                        result = true;
+                    }
+                }
+
+                if (scope.data.endDate != null && scope.data.endDate != undefined && scope.data.endDate != '') {
+                    if (!scope.validateDate(scope.data.endDate)) {
+                        result = true;
+                    }
+                }
+
+                if (scope.data.startTime != null && scope.data.startTime != undefined && scope.data.startTime != '') {
+                    if (!scope.validateTime(scope.data.startTime)) {
+                        result = true;
+                    }
+                }
+
+                if (scope.data.endTime != null && scope.data.endTime != undefined && scope.data.endTime != '') {
+                    if (!scope.validateTime(scope.data.endTime)) {
+                        result = true;
+                    }
+                }
+
+                return result;
+            };
+
+        }
+    }
+
+    function checkAnyFieldFilled(scope) {
+        var result = [];
+
+        try {
+
+            if (scope.data.paymentSystem != null && scope.data.paymentSystem != undefined && scope.data.paymentSystem != "0")
+                result.push(getObjStr("paymentsystem", scope.data.paymentSystem.toString(), true));
+
+            if (scope.data.direction != null && scope.data.direction != undefined && scope.data.direction != "0")
+                result.push(getObjStr("direction", scope.data.direction.toString(), true));
+
+            if (scope.data.creditDebit != null && scope.data.creditDebit != undefined && scope.data.creditDebit != "0")
+                result.push(getObjStr("cdtdbtind", scope.data.creditDebit.toString(), true));
+
+            if (scope.data.scheme != null && scope.data.scheme != undefined && scope.data.scheme != "0")
+                result.push(getObjStr("paymentscheme", scope.data.scheme.toString(), true));
+            
+            if (scope.data.sanctionsts != null && scope.data.sanctionsts != undefined && scope.data.sanctionsts != "0")
+                result.push(getObjStr("sanctionsts", scope.data.sanctionsts.toString(), true));
+
+            if (scope.data.paymentId != null && scope.data.paymentId != undefined && scope.data.paymentId != '')
+                result.push(getObjStr("paymentId", scope.data.paymentId.toString(), false));
+
+            if (scope.data.sanctionRequestId != null && scope.data.sanctionRequestId != undefined && scope.data.sanctionRequestId != '')
+                result.push(getObjStr("sanctionsrequestid", scope.data.sanctionRequestId.toString(), false));
+
+            if (scope.data.settlementAmount != null && scope.data.settlementAmount != undefined && scope.data.settlementAmount != '')
+                result.push(getObjStr("intrbksttlamt", scope.data.settlementAmount.toString(), false));
+
+            if (scope.data.currency != null && scope.data.currency != undefined && scope.data.currency != '')
+                result.push(getObjStr("intrbksttlccy", scope.data.currency.toString(), false));
+
+            if (scope.data.counterpartyName != null && scope.data.counterpartyName != undefined && scope.data.counterpartyName != '')
+                result.push(getObjStr("counterpartynm", scope.data.counterpartyName.toString(), false));
+
+            if (scope.data.counterpartySortcode != null && scope.data.counterpartySortcode != undefined && scope.data.counterpartySortcode != '')
+                result.push(getObjStr("counterpartyagt", scope.data.counterpartySortcode.toString(), false));
+
+            if (scope.data.counterpartyAccount != null && scope.data.counterpartyAccount != undefined && scope.data.counterpartyAccount != '')
+                result.push(getObjStr("counterpartyacct", scope.data.counterpartyAccount.toString(), false));
+
+            if (scope.data.counterpartyAddress != null && scope.data.counterpartyAddress != undefined && scope.data.counterpartyAddress != '')
+                result.push(getObjStr("counterpartyadr", scope.data.counterpartyAddress.toString(), false));
+
+            if (scope.data.customerName != null && scope.data.customerName != undefined && scope.data.customerName != '')
+                result.push(getObjStr("customernm", scope.data.customerName.toString(), false));
+
+            if (scope.data.customerSortcode != null && scope.data.customerSortcode != undefined && scope.data.customerSortcode != '')
+                result.push(getObjStr("customeragt", scope.data.customerSortcode.toString(), false));
+
+            if (scope.data.customerAccount != null && scope.data.customerAccount != undefined && scope.data.customerAccount != '')
+                result.push(getObjStr("customeracct", scope.data.customerAccount.toString(), false));
+
+        } catch (err) {
+            console.error('Error parsing fields. Error message: ' + err);
+        }
+
+        console.log('Result: ' + result);
+
+        var results = JSON.parse("[" + result + "]");
+
+        console.log('Result JSON: ' + JSON.stringify(result));
+
+        return results;
+    }
+
+    function doQuery(scope) {
+        var sqlString = '';
+
+        var fields = checkAnyFieldFilled(scope);
+
+        console.log('fields: ' + fields);
+
+        if (fields.length > 0) {
+            var and = false;
+            sqlString = "WHERE ";
+
+            for (i = 0; i < fields.length; i++) { 
+                var obj = fields[i];
+                if (and)
+                    sqlString = sqlString.concat(" AND ");
+
+
+                sqlString = sqlString.concat(obj.field);
+                if (!obj.exactMatch)
+                    sqlString = sqlString.concat(" LIKE '%");
+                else
+                    sqlString = sqlString.concat(" = '");
+
+                sqlString = sqlString.concat(obj.value);
+
+                if (!obj.exactMatch)
+                    sqlString = sqlString.concat("%");
+
+                sqlString = sqlString.concat("'");
+
+                and = true;
+            }
+        }
+
+        var queryDateTimes = addDateTimes(scope, and);
+        sqlString = sqlString.concat(queryDateTimes);
+
+        console.log("Query: " + sqlString);
+        return sqlString;
+    }
+
+
+    function addDateTimes(scope, and) {
+        console.log('Generating Query')
+        var sqlString = "";
+
+        if ((scope.data.startDate != null && scope.data.startDate != undefined && scope.data.startDate != '') ||
+            (scope.data.startTime != null && scope.data.startTime != undefined && scope.data.startTime != '') ||
+            (scope.data.endDate != null && scope.data.endDate != undefined && scope.data.endDate != '') ||
+            (scope.data.endTime != null && scope.data.endTime != undefined && scope.data.endTime != '')) {
+            console.log("Retrieving dates.");
+
+            if (!and) {
+                sqlString = sqlString.concat(" WHERE ");
+            }
+
+            var startDateFilled = false;
+            var startTimeFilled = false;
+            var endDateFilled = false;
+            var endTimeFilled = false;
+
+            var startDateTimeFilled = false;
+            var endDateTimeFilled = false;
+
+            var startTimeStr = "00:00:00";
+            var endTimeStr = "23:59:59";
+
+            var startDateTimeStr;
+            var endDateTimeStr;
+
+
+            if (scope.data.startDate != null && scope.data.startDate != undefined && scope.data.startDate != '') {
+                startDateFilled = true;
+            }
+            if (scope.data.startTime != null && scope.data.startTime != undefined && scope.data.startTime != '') {
+                startTimeFilled = true;
+            }
+            if (scope.data.endDate != null && scope.data.endDate != undefined && scope.data.endDate != '') {
+                endDateFilled = true;
+            }
+            if (scope.data.endTime != null && scope.data.endTime != undefined && scope.data.endTime != '') {
+                endTimeFilled = true;
+            }
+
+            if (startDateFilled || startTimeFilled || endDateFilled || endTimeFilled) {
+                if (startDateFilled && startTimeFilled) {
+                    startDateTimeStr = scope.data.startDate + " " + scope.data.startTime;
+                } else if(startDateFilled && !startTimeFilled) {
+                    startDateTimeStr = scope.data.startDate + " " + startTimeStr;
+                } else if (!startDateFilled && startTimeFilled) {
+                    startDateTimeStr =  scope.getActualDate() + " " + scope.data.startTime;
+                }
+
+                if (endDateFilled && endTimeFilled) {
+                    endDateTimeStr = scope.data.endDate + " " + scope.data.endTime;
+                } else if(endDateFilled && !endTimeFilled) {
+                    endDateTimeStr = scope.data.endDate + " " + endTimeStr;
+                } else if(!endDateFilled && endTimeFilled) {
+                    endDateTimeStr + scope.getActualDate() + scope.data.endTime;
+                }
+            }
+
+            if (startDateTimeStr != null && startDateTimeStr != undefined && startDateTimeStr != '') {
+                startDateTimeFilled = true;
+            }
+
+            if (endDateTimeStr != null && endDateTimeStr != undefined && endDateTimeStr != '') {
+                endDateTimeFilled = true;
+            }
+
+
+            if (startDateTimeFilled || endDateTimeFilled) {
+                if (and) {
+                    sqlString = sqlString + " AND ";
+                }
+
+                if (startDateTimeFilled && endDateTimeFilled) {
+                    sqlString = sqlString + "paymenttimestamp >= '" + startDateTimeStr + "' AND paymenttimestamp <= '" + endDateTimeStr+"'";
+                }else if (startDateTimeFilled) {
+                    sqlString = sqlString + "paymenttimestamp >= '" + startDateTimeStr+"'";                     
+                } else {
+                    sqlString = sqlString + "paymenttimestamp <= '" + endDateTimeStr+"'";                    
+                }
+            }
+        }
+
+        console.log('Query: ' + sqlString);
+        return sqlString;
+    }
+
+
+    function submit_search_sanction() {
+        var scope = angular.element($("#submit-searchChapsSanction-container")).scope();
+
+        console.log('Submitting search sanction');
+        
+        var query = doQuery(scope);
+
+        scope.z.angularBind('sanctionsQuery', query, '20180619-074807_684250220');
+        scope.z.runParagraph('20180619-074807_684250220');
+    }
+
+    
+</script>

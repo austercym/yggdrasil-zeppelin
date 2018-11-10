@@ -1,0 +1,342 @@
+%angular
+<div  id="submit-returnChapsPayment-container">
+    <div ng-show="show" ng-class="{'returnChapsPayment-submit-status-container-failed': !result.success, 'returnChapsPayment-submit-status-container': result.success}">
+        <div class="result-header">{{result.text}}</div>
+        <div class="result-details row" ng-show="show">
+            <div class="col-xs-3">
+                <label>Chaps Payment: </label>
+                <div>{{result.payment}}</div>
+             </div>
+        </div>
+    </div>
+
+    <form name="returnChapsPaymentForm" id="post-returnChapsPayment-form">
+        <div class= "form-group">
+            <div class="row">
+                <!-- UserName -->
+                <div class="col-xs-3 form-group" >
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" class="form-control" id="username" ng-model="data.username">
+                </div>
+
+                <!-- Password -->
+                <div class="col-xs-3 form-group" >
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" class="form-control" id="password" ng-model="data.password">
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Return Payment Id -->
+                <div class="col-xs-3 form-group" >
+                    <label for="returnPaymentId">Return Payment Id: </label>
+                    <input type="text" name="returnPaymentId" class="form-control" id="returnPaymentId" ng-model="data.returnPaymentId">
+                </div>
+
+                <!-- Debtor BIC -->
+                <div class="col-xs-3 form-group" >
+                    <label for="dbtorBIC">Debtor BIC: </label>
+                    <input type="text" name="dbtorBIC" class="form-control" id="dbtorBIC" ng-model="data.dbtorBIC">
+                </div>
+
+                <!-- Creditor BIC -->
+                <div class="col-xs-3 form-group" >
+                    <label for="cdtrBIC">Creditor BIC: </label>
+                    <input type="text" name="cdtrBIC" class="form-control" id="cdtrBIC" ng-model="data.cdtrBIC">
+                </div>
+
+                <!-- Creditor SortCode -->
+                <div class="col-xs-3 form-group" >
+                    <label for="cdtrSortcode">Creditor SortCode: </label>
+                    <input type="text" name="cdtrSortcode" class="form-control" id="cdtrSortcode" ng-model="data.cdtrSortcode">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" onclick="submit_return_chaps()" ng-disabled="disableReturnButton()">{{submit.text}}</button>
+        </div>
+        
+    </form>
+
+    <div class="clear-form-button">
+      <button class="btn" ng-click="clearForm()">Clear Form</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style media="screen" type="text/css">
+
+.returnChapsPayment-submit-status-container {
+    background-color: #def9db;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.returnChapsPayment-submit-status-container-failed{
+    background-color: #900C3F;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    color: #f2f2f2;
+}
+
+.result-header{
+    margin-bottom: 15px;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+#submit-returnChapsPayment-container{
+    margin-top:20px; 
+    margin-bottom:20px;
+    width: 98%;
+}
+
+
+.clear-form-button{
+    display: inline;
+    float: right;
+}
+
+.invalid-feedback{
+    width: 100%;
+    margin-top: .55rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+</style>
+
+
+
+
+
+<script>
+
+    angular.element(document).ready(function () {
+        console.log('init return chaps payment');
+        init_returnChapsPayment();
+    });
+
+    function init_returnChapsPayment() {
+        var scope = angular.element($("#submit-returnChapsPayment-container")).scope();
+        if (typeof(scope.result)=== "undefined") {
+            scope.result = {
+                text: "",
+                payment: "",
+                success: false
+            };
+
+            show = false;
+            scope.submit = {
+                inprogress: false,
+                text: 'Return Chaps Payment'
+            };
+
+            scope.data = {};
+
+            scope.generateInputValues = function() {
+                console.log('Initializing input values');
+                scope.data.dbtorBIC = "ORUNGB3L";
+            };
+
+            scope.generateInputValues(scope);
+
+            scope.clearForm = function(){
+                scope.data = {};
+                scope.generateInputValues(scope);
+            }; 
+
+            scope.disableReturnButton = function () {
+                if (scope.submit.inprogress) {
+                    return true;
+                }
+
+                if (scope.data.returnPaymentId == null || scope.data.returnPaymentId == undefined ||scope.data.returnPaymentId == '') {
+                    return true;
+                }
+
+                var choice = 0;
+
+                if (scope.data.cdtrBIC == null || scope.data.cdtrBIC == undefined ||scope.data.cdtrBIC == '') {
+                    choice++;
+                }
+
+                if (scope.data.cdtrSortcode == null || scope.data.cdtrSortcode == undefined ||scope.data.cdtrSortcode == '') {
+                    choice++;
+                }
+
+                if (choice != 1) {
+                    return true;
+                }
+
+                if (scope.data.username == null || scope.data.username == undefined || scope.data.username == '') {
+                    return true;
+                }
+
+                if (scope.data.password == null || scope.data.password == undefined || scope.data.password == '') {
+                    return true;
+                }
+
+                return false;
+            };
+
+        }
+    }
+
+
+
+
+    function getData(scope) {
+        console.log('Generating data ReturnPaymentId: ' + scope.data.returnPaymentId);
+        console.log('DbtorBic: ' + scope.data.dbtorBIC );
+        console.log('CdtrBic: ' + scope.data.cdtrBIC);
+        console.log('cdtrSortcode: ' + scope.data.cdtrSortcode);
+        
+        var data = JSON.stringify(
+        {
+            'returnPaymentId': scope.data.returnPaymentId,
+            'dbtrBIC' : scope.data.dbtorBIC,
+            'cdtrBIC' : scope.data.cdtrBIC,
+            'cdtrSortcode' : scope.data.cdtrSortcode
+        });
+
+        console.log('Data generated: ' + data);
+
+        return data;
+    }
+
+    function send_chaps_with_token(token, scope, returnPaymentId, dbtorBIC) {
+        scope.show = false;
+        scope.submit.inprogress = true;
+        scope.submit.text = "Submitting...";
+
+        var xhrTokenChaps = new XMLHttpRequest();
+        var url = "https://api-0.node.consul:8183/bifrost/chaps/payment/return";
+
+        var data  = getData(scope);
+
+        console.log('Return chaps payment URL obtained: ' + url);
+        xhrTokenChaps.timeout = 25000; //25 seconds
+        xhrTokenChaps.open("POST", url, true);
+        xhrTokenChaps.setRequestHeader('Authorization', 'Bearer ' + token);
+        xhrTokenChaps.setRequestHeader("Content-type", "application/json");
+        xhrTokenChaps.onreadystatechange = function () {
+            if (xhrTokenChaps.readyState === 4) {
+                if (xhrTokenChaps.status === 200) {
+                    console.log('Chaps payment response: ' + xhrTokenChaps.responseText);
+                    var result = JSON.parse(xhrTokenChaps.responseText);
+                    console.log('Result: ' + xhrTokenChaps.responseText);
+
+                    if (result.TxSts == 'SENT') {
+                        scope.result.text = "Chaps Payment returned Successfully";
+                        scope.result.success = true;
+                    } else {
+                        scope.result.text = "Error returning chaps payment. Payment Rejected. Reason: " + result.StsRsn;
+                        scope.result.success = false;
+                    }
+
+                    scope.result.payment = xhrTokenChaps.responseText;
+                    scope.show = true;
+                    scope.$apply(); 
+                } else {
+                    scope.result.text = "Error returning chaps payment";
+                    scope.result.payment = xhrTokenChaps.responseText;
+                    scope.result.success = false;
+                    scope.show = true;
+                    scope.$apply(); 
+                }
+            }
+
+            scope.submit.inprogress = false;
+            scope.submit.text = "Return Chaps Payment"
+        };
+
+        console.log('sending data: ' + data);
+        xhrTokenChaps.send(data);
+    }
+
+    function do_ajax_query_send_token(scope, returnPaymentId, dbtorBIC, data) {
+        scope.show = false;
+        scope.submit.inprogress = true;
+        scope.submit.text = "Submitting...";
+        var token = '';
+
+        var xhr = new XMLHttpRequest();
+        var url = "https://api-0.node.consul:8285/bifrost/login";
+        console.log('Get user token URL obtained: ' + url);
+        xhr.timeout = 25000; //25 seconds
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log('Chaps payment response: ' + xhr.responseText);
+                    var result = JSON.parse(xhr.responseText);
+                    token = result.access_token;
+                    console.log('Token retrieved: ' + token);
+                    send_chaps_with_token(token, scope, returnPaymentId, dbtorBIC);
+                } else {
+                    scope.result.text = "Error getting token";
+                    scope.result.payment = xhr.responseText;
+                    scope.result.success = false;
+                    scope.submit.inprogress = false;
+                    scope.submit.text = "Send Chaps Payment";
+                    scope.show = true;
+                    scope.$apply(); 
+                }
+            }
+        };
+
+        console.log('sending token data: ' + data);
+        xhr.send(data);
+    }
+
+    function submit_return_chaps() {
+        var scope = angular.element($("#submit-returnChapsPayment-container")).scope();
+
+        var returnPaymentId = scope.data.returnPaymentId;
+        var dbtorBIC = null;
+
+        if (scope.data.dbtorBIC != null && scope.data.dbtorBIC != undefined && scope.data.dbtorBIC != '') {
+            dbtorBIC = scope.data.dbtorBIC;
+        }
+
+        var tokenData = JSON.stringify(
+        {
+            'usr': scope.data.username,
+            'pwd' : scope.data.password
+        });
+
+        console.log('Return Payment Id: ' + returnPaymentId);
+
+        do_ajax_query_send_token(scope, returnPaymentId, dbtorBIC, tokenData);
+    }
+    
+</script>

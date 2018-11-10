@@ -1,0 +1,198 @@
+%angular
+<div id="searchError">
+<form name="searchErrorForm" id="searchErrorForm">
+  <div class= "form-group">
+    <div class="row">
+        <div class="col-xs-3 form-group">
+          <!-- payment id -->
+            <label for="s-paymentId" id="paymentIdInput">Payment Id: </label>
+            <input type="text" class="form-control" id="searchErrorPaymentId" ng-model="data.paymentId"></input>
+        </div>
+     
+        <!-- faster payment id -->
+        <div  class="col-xs-3 form-group">
+              <label for="serachErrorFpid">FP Id: </label>
+              <input type="text" class="form-control" id="serachErrorFpid" name="serachErrorFpid" ng-model="data.fpid"></input>
+         </div>
+    </div>
+
+
+   <div class="row">
+    <!-- direction -->
+    <div class="col-xs-3 form-group">
+             <label for="searchErrorDirection" id="directionLabel">Direction: </label>
+                <select class="form-control" id="searchErrorDirection" name="searchErrorDirection" ng-model="data.direction">
+                    <option selected value> -- select an option -- </option>
+                    <option value="'I'">Inbound</option>
+                    <option value="'O'">Outbound</option>
+                </select>
+    </div>
+    <!-- debit/credit -->
+    <div  class="col-xs-3 form-group">
+        <label for="searchErrorCreditDebit" >Credit / Debit: </label>
+            <select class="form-control" id="searchErrorCreditDebit" name="searchErrorCreditDebit" ng-model="data.creditDebit">
+                <option selected value> -- select an option -- </option>
+                <option value="'D'">Debit</option>
+                <option value="'C'">Credit</option>
+            </select>
+    </div>  
+    <div  class="col-xs-3 form-group">
+      <!-- scheme -->   
+        <label for="searchErrorPaymentscheme" >Scheme: </label>
+            <select class="form-control" id="searchErrorPaymentscheme" name="searchErrorPaymentscheme" ng-model="data.paymentScheme">
+                <option selected value> -- select an option -- </option>
+                <option value="'pacs.002.001.06'">pacs_002_001</option>
+                <option value="'pacs.004.001.06'">pacs_004_001</option>
+                <option value="'pacs.007.001.06'">pacs_007_001</option>
+                <option value="'pacs.008.001.06'">pacs_008_001</option>
+                <option value="'pacs.009.001.06'">pacs_009_001</option>
+            </select>
+    </div>
+</div>
+
+<div class="row">
+    <!-- amount -->
+    <div  class="col-xs-3 form-group">
+        <label for="searchErrorIntrbksttlamt">Settlement Amount: </label>
+        <input type="number" class="form-control" id="searchErrorIntrbksttlamt" name="searchErrorIntrbksttlamt" 
+            step="0.01" min="0" ng-model="data.amount">
+    </div>
+    <!-- currency -->
+    <div  class="col-xs-3 form-group">
+        <label for="seachErrorIntrbksttlccy">Currency: </label>
+        <input type="text" class="form-control" id="seachErrorIntrbksttlccy" name="seachErrorIntrbksttlccy" ng-model="data.currency"></input>
+    </div>
+  
+</div>
+
+<div class="row">
+    <!-- debtor acc-->
+     <div class="col-xs-3 form-group">
+         <label for="searchErrorDbtracct">Debtor Account: </label>
+         <input type="text" class="form-control" id="searchErrorDbtracct" name="searchErrorDbtracct" ng-model="data.dbtracct"></input>
+    </div>
+    <!-- creditor acc-->
+     <div class="col-xs-3 form-group">
+         <label for="searchErrorCreditorAcc">Creditor Account: </label>
+         <input type="text" class="form-control" id="searchErrorCreditorAcc" name="searchErrorCreditorAcc" ng-model="data.creditorAcc"></input>
+    </div>
+</div>
+
+<div class="row">
+    <!-- payment start date -->
+    <div class="col-xs-3 form-group" >
+            <label for="searchErrorStartDate">Start Date:</label>
+            <input class="form-control"  type="date" name="searchErrorStartDate" id="searchErrorStartDate" ng-model="data.startDate"></input>
+        </div>
+    <div class="col-xs-3 form-group" ng-class="{'has-error': !searchErrorForm.searchErrorStartTime.$valid && searchErrorForm.searchErrorStartTime.$touched}" >
+            <label for="searchErrorStartTime">Start Time:</label>
+            <input class="form-control"  type="text" name="searchErrorStartTime" id="searchErrorStartTime" ng-model="data.startTime"  
+                placeholder="hh:mm:ss" ng-pattern="/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/"></input>
+            <label ng-show="!searchErrorForm.searchErrorStartTime.$valid && searchErrorForm.searchErrorStartTime.$touched">Expected hh:mm:ss format</label>
+    </div>
+ <!-- payment end date -->
+ <div class="col-xs-3 form-group" >
+            <label for="searchErrorEndDate">End Date:</label>
+            <input class="form-control"  type="date" name="searchErrorEndDate" id="searchErrorEndDate" ng-model="data.endDate"></input>
+        </div>
+    <div class="col-xs-3 form-group" ng-class="{'has-error': !searchErrorForm.searchErrorEndTime.$valid && searchErrorForm.searchErrorEndTime.$touched}" >
+            <label for="searchErrorEndTime">End Time:</label>
+            <input class="form-control"  type="text" name="searchErrorEndTime" id="searchErrorEndTime" ng-model="data.endTime"  
+                placeholder="hh:mm:ss" ng-pattern="/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/"></input>
+            <label ng-show="!searchErrorForm.searchErrorEndTime.$valid && searchErrorForm.searchErrorEndTime.$touched">Expected hh:mm:ss format</label>
+    </div>
+</div>
+
+
+<div class="row">
+    <!-- message -->
+    <div  class="col-xs-3 form-group">
+        <label for="searchErrorMessageContent">Message Content: </label>
+        <input type="text" class="form-control" id="searchErrorMessageContent" name="searchErrorMessageContent" 
+             ng-model="data.content">
+    </div>
+</div>
+
+
+
+  </div>
+  <button type="submit" class="btn btn-primary" ng-click="search()"> Search</button>
+</form>
+
+<div class="clear-form-button">
+    <button class="btn" ng-click="clearForm()">Clear Form</button>
+</div>
+
+</div>
+
+<script>
+
+function init_search_errors(){
+    var scope = angular.element($("#searchError")).scope();
+    scope.queryString = "";
+    scope.z.angularBind('searchErrorQuery', scope.queryString,'20171215-093113_1835093697');
+    scope.data = {};
+
+    scope.clearForm = function(){
+        var scope = angular.element($("#searchError")).scope();
+        scope.data = {};
+    }
+
+    scope.search = function(){
+
+        var scope = angular.element($("#searchError")).scope();
+
+        var startDateQuery = "";
+        var endDateQuery = "";
+        if (scope.data.startDate != "" && scope.data.startDate != null) {
+            var startDateElement = document.getElementById('searchErrorStartDate').value;
+            if (scope.data.startTime != "" && scope.data.startTime != null) {
+                startDateQuery =  "\'" + startDateElement + " " + scope.data.startTime + ".000" + "\'";
+            }else {
+                startDateQuery = "\'" + startDateElement + "\'";
+            }
+        }
+        if (scope.data.endDate != "" && scope.data.endDate != null) {
+            var endDateElement = document.getElementById('searchErrorEndDate').value;
+            if (scope.data.endTime != "" && scope.data.endTime != null) {
+                endDateQuery  =  "\'" + endDateElement + " " + scope.data.endTime + ".000" + "\'";
+            }else {
+                endDateQuery = "\'" + endDateElement + "\'";
+            }
+        }
+
+        var values = [scope.data.paymentId, scope.data.fpid, scope.data.direction, scope.data.creditDebit, scope.data.paymentScheme, scope.data.amount,
+                        getStringValue(scope.data.currency), scope.data.dbtracct, scope.data.creditorAcc, getLikeValue(scope.data.content), startDateQuery,  endDateQuery]
+
+        var queryFields = ["paymentId = ", "fpid = ", "direction = ", "cdtdbtind = ", "paymentscheme =", "intrbksttlamt = ",
+            "intrbksttlccy = ", "dbtracct = ", "cdtracct = ", "UPPER(paymentmessage) like ", "paymenttimestamp >= ", "paymenttimestamp <= "]
+        
+        var queryValues = queryFields.map(function(e, i) {
+            var field = e;
+            var value = values[i]
+            if (value === null || typeof(value) == 'undefined' || value === "" || value == "'%%'"){
+                return "";
+            }
+            return e + value;
+        });
+        var notEmptyQueryValues = queryValues.filter(function check(c) { if (c === "") {return false} return true })
+        
+        var queryString = "";
+        if (notEmptyQueryValues.length != 0){
+            queryString = "where " + notEmptyQueryValues.join(" and ");
+        }
+        scope.queryString = queryString;
+        console.log(scope.queryString);
+        scope.z.angularBind('searchErrorQuery', scope.queryString,'20171215-093113_1835093697');
+        scope.z.runParagraph('20171215-093113_1835093697');
+    }
+
+
+}
+</script>
+
+<style>
+#searchError{
+    width: 98%;
+}
+</style>
