@@ -1,0 +1,665 @@
+%angular
+<div  id="submit-searchChapsException-container">
+
+    <form name="searchChapsExceptionForm" id="post-searchChapsException-form">
+        <div class= "form-group">
+            <div class="row">
+                <!-- Payment Id -->
+                <div class="col-xs-3 form-group" >
+                    <label for="paymentId">Payment Id: </label>
+                    <input type="text" name="paymentId" class="form-control" id="paymentId" ng-model="data.paymentId">
+                </div>
+
+                <!-- Payment Type -->
+                <div class="col-xs-3 form-group">
+                    <label for="paymentType">Payment Type: </label>
+                    <select class="form-control" id="paymentType" ng-model="data.paymentType">
+                        <option value="0">-- Select an option --</option>
+                        <option value="MT103">MT103</option>
+                        <option value="MT202">MT202</option>
+                        <option value="MT202COV">MT202 COV</option>
+                        <option value="MT202RETN">MT202 Return</option>
+                    </select>
+                </div>
+
+                <!-- Scheme -->
+                <div class="col-xs-3 form-group">
+                    <label for="scheme">Scheme: </label>
+                    <select class="form-control" id="scheme" ng-model="data.scheme">
+                        <option value="0">-- Select an option --</option>
+                        <option value="pacs.008.001.07">pacs_008_001_07</option>
+                        <option value="pacs.009.001.07">pacs_009_001_07</option>
+                    </select>
+                </div>
+
+                <!-- Direction -->
+                <div class="col-xs-3 form-group">
+                    <label for="direction">Direction: </label>
+                    <select class="form-control" id="direction" ng-model="data.direction">
+                        <option value="0">-- Select an option --</option>
+                        <option value="I">Inbound</option>
+                        <option value="O">Outbound</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Credit / Debit -->
+                <div class="col-xs-3 form-group">
+                    <label for="creditDebit">Credit / Debit: </label>
+                    <select class="form-control" id="creditDebit" ng-model="data.creditDebit">
+                        <option value="0">-- Select an option --</option>
+                        <option value="D">Debit</option>
+                        <option value="C">Credit</option>
+                    </select>
+                </div>
+
+
+                <!-- Transaction Id -->
+                <div class="col-xs-3 form-group" >
+                    <label for="transactionId">Transaction Id: </label>
+                    <input type="text" name="transactionId" class="form-control" id="transactionId" ng-model="data.transactionId">
+                </div>
+            
+                <!-- Settlement Amount -->
+                <div class="col-xs-3 form-group" >
+                    <label for="settlementAmount">Settlement Amount: </label>
+                    <input type="text" name="settlementAmount" class="form-control" id="settlementAmount" ng-model="data.settlementAmount">
+                </div>
+
+                <!-- Currency -->
+                <div class="col-xs-3 form-group" >
+                    <label for="currency">Currency: </label>
+                    <input type="text" name="currency" class="form-control" id="currency" ng-model="data.currency">
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Debtor Agent Name -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorAgentName">Debtor Agent Name: </label>
+                    <input type="text" name="debtorAgentName" class="form-control" id="debtorAgentName" ng-model="data.debtorAgentName">
+                </div>
+
+                <!-- Debtor Agent Account -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorAgentAccount">Debtor Agent Account: </label>
+                    <input type="text" name="debtorAgentAccount" class="form-control" id="debtorAgentAccount" ng-model="data.debtorAgentAccount">
+                </div>
+
+                <!-- Debtor Agent BICFI -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorAgentBICFI">Debtor Agent BICFI: </label>
+                    <input type="text" name="debtorAgentBICFI" class="form-control" id="debtorAgentBICFI" ng-model="data.debtorAgentBICFI">
+                </div>
+
+                <!-- Debtor Agent Postal Address -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorAgentAddress">Debtor Agent Postal Address: </label>
+                    <input type="text" name="debtorAgentAddress" class="form-control" id="debtorAgentAddress" ng-model="data.debtorAgentAddress">
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Debtor Name -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorName">Debtor Name: </label>
+                    <input type="text" name="debtorName" class="form-control" id="debtorName" ng-model="data.debtorName">
+                </div>
+
+                <!-- Debtor Account -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorAccount">Debtor Account: </label>
+                    <input type="text" name="debtorAccount" class="form-control" id="debtorAccount" ng-model="data.debtorAccount">
+                </div>
+
+                <!-- Debtor BICFI -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorBICFI">Debtor BICFI: </label>
+                    <input type="text" name="debtorBICFI" class="form-control" id="debtorBICFI" ng-model="data.debtorBICFI">
+                </div>
+
+                <!-- Debtor Postal Address -->
+                <div class="col-xs-3 form-group" >
+                    <label for="debtorAddress">Debtor Postal Address: </label>
+                    <input type="text" name="debtorAddress" class="form-control" id="debtorAddress" ng-model="data.debtorAddress">
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Creditor Agent Name -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorAgentName">Creditor Agent Name: </label>
+                    <input type="text" name="creditorAgentName" class="form-control" id="creditorAgentName" ng-model="data.creditorAgentName">
+                </div>
+
+                <!-- Creditor Agent Account -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorAgentAccount">Creditor Agent Account: </label>
+                    <input type="text" name="creditorAgentAccount" class="form-control" id="creditorAgentAccount" ng-model="data.creditorAgentAccount">
+                </div>
+
+                <!-- Creditor Agent BICFI -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorAgentBICFI">Creditor Agent BICFI: </label>
+                    <input type="text" name="creditorAgentBICFI" class="form-control" id="creditorAgentBICFI" ng-model="data.creditorAgentBICFI">
+                </div>
+
+                <!-- Creditor Agent Postal Address -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorAgentAddress">Creditor Agent Postal Address: </label>
+                    <input type="text" name="creditorAgentAddress" class="form-control" id="creditorAgentAddress" ng-model="data.creditorAgentAddress">
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Creditor Name -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorName">Creditor Name: </label>
+                    <input type="text" name="creditorName" class="form-control" id="creditorName" ng-model="data.creditorName">
+                </div>
+
+                <!-- Creditor Account -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorAccount">Creditor Account: </label>
+                    <input type="text" name="creditorAccount" class="form-control" id="creditorAccount" ng-model="data.creditorAccount">
+                </div>
+
+                <!-- Creditor BICFI -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorBICFI">Creditor BICFI: </label>
+                    <input type="text" name="creditorBICFI" class="form-control" id="creditorBICFI" ng-model="data.creditorBICFI">
+                </div>
+
+                <!-- Creditor Postal Address -->
+                <div class="col-xs-3 form-group" >
+                    <label for="creditorAddress">Creditor Postal Address: </label>
+                    <input type="text" name="creditorAddress" class="form-control" id="creditorAddress" ng-model="data.creditorAddress">
+                </div>
+            </div>
+             <div class="row">
+                <!-- Start Date -->
+                <div class="col-xs-3 form-group" >
+                    <label for="startDate">Start Date: </label>
+                    <input type="text" name="startDate" class="form-control" id="startDate" ng-model="data.startDate" placeholder="yyyy-mm-dd">
+                </div>
+
+                <!-- Start Time -->
+                <div class="col-xs-3 form-group" >
+                    <label for="startTime">Start Time: </label>
+                    <input type="text" name="startTime" class="form-control" id="startTime" ng-model="data.startTime" placeholder="hh:mm:ss">
+                </div>
+
+                <!-- End Date -->
+                <div class="col-xs-3 form-group" >
+                    <label for="endDate">End Date: </label>
+                    <input type="text" name="endDate" class="form-control" id="endDate" ng-model="data.endDate" placeholder="yyyy-mm-dd">
+                </div>
+
+                <!-- End Time -->
+                <div class="col-xs-3 form-group" >
+                    <label for="endTime">End Time: </label>
+                    <input type="text" name="endTime" class="form-control" id="endTime" ng-model="data.endTime" placeholder="hh:mm:ss">
+                </div>
+            </div>
+
+        
+            <button type="submit" class="btn btn-primary" onclick="submit_search_exception()" ng-disabled="disableSubmitButton()">{{submit.text}}</button>
+        </div>
+        
+    </form>
+
+    <div class="clear-form-button">
+      <button class="btn" ng-click="clearForm()">Clear Form</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style media="screen" type="text/css">
+
+.searchChapsException-submit-status-container {
+    background-color: #def9db;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.searchChapsException-submit-status-container-failed{
+    background-color: #900C3F;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    color: #f2f2f2;
+}
+
+.result-header{
+    margin-bottom: 15px;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+#submit-searchChapsException-container{
+    margin-top:20px; 
+    margin-bottom:20px;
+    width: 98%;
+}
+
+
+.clear-form-button{
+    display: inline;
+    float: right;
+}
+
+.invalid-feedback{
+    width: 100%;
+    margin-top: .55rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+</style>
+
+
+
+
+
+<script>
+
+    angular.element(document).ready(function () {
+        console.log('init search chaps sanction');
+        init_searchChapsException();
+    });
+
+    function init_searchChapsException() {
+        var scope = angular.element($("#submit-searchChapsException-container")).scope();
+        if (typeof(scope.result)=== "undefined") {
+            scope.result = {
+                text: "",
+                payment: "",
+                success: false
+            };
+
+            show = false;
+            scope.submit = {
+                inprogress: false,
+                text: 'Search Exception'
+            };
+
+            scope.data = {};
+
+            scope.generateInputValues = function(scope) {
+                console.log('Initializing input values');
+                scope.data.paymentType = "0";
+                scope.data.scheme = "0";
+                scope.data.direction = "0";
+                scope.data.creditDebit = "0";
+            };
+
+            scope.generateInputValues(scope);
+
+            scope.clearForm = function(){
+                var scope = angular.element($("#submit-searchChapsException-container")).scope();
+                scope.data = {};
+                scope.generateInputValues(scope);
+            };
+
+            scope.getActualDate = function() {
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd = '0'+dd
+                } 
+
+                if(mm<10) {
+                    mm = '0'+mm
+                } 
+
+                today = yyyy + '-' + mm + '-' + dd;
+                console.log('Actual date generated: ' + today);
+                return today;
+            };
+
+            scope.validateDate = function(dateStr) {
+                 if(!/^\d{4}\-\d{2}\-\d{2}$/.test(dateStr))
+                    return false;
+
+                var params = dateStr.split('-');
+
+                var year = parseInt(params[0]);
+                var month = parseInt(params[1]);
+                var day = parseInt(params[2]);
+
+                if (year < 2000 || year > 2050 || month < 1 || month > 12 || day < 0 || day > 31)
+                    return false;
+
+                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                    monthLength[1] = 29;
+
+                if (day > monthLength[month -1])
+                    return false;
+
+                return true;
+            };
+
+            scope.validateTime = function(timeStr) {
+                if(!/^\d{2}:\d{2}:\d{2}$/.test(timeStr))
+                    return false;
+
+                var params = timeStr.split(':');
+
+                var hour = parseInt(params[0]);
+                var minute = parseInt(params[1]);
+                var second = parseInt(params[2]);
+
+                if (hour < 0 || hour > 23 || minute < 0 || minute > 59 || second < 0 || second > 59)
+                    return false;
+
+                return true;
+            };
+
+             scope.disableSubmitButton = function() {
+                var scope = angular.element($("#submit-searchChapsException-container")).scope();
+                var result = false;
+
+                if (scope.data.startDate != null && scope.data.startDate != undefined && scope.data.startDate != '') {
+                    if (!scope.validateDate(scope.data.startDate)) {
+                        result = true;
+                    }
+                }
+
+                if (scope.data.endDate != null && scope.data.endDate != undefined && scope.data.endDate != '') {
+                    if (!scope.validateDate(scope.data.endDate)) {
+                        result = true;
+                    }
+                }
+
+                if (scope.data.startTime != null && scope.data.startTime != undefined && scope.data.startTime != '') {
+                    if (!scope.validateTime(scope.data.startTime)) {
+                        result = true;
+                    }
+                }
+
+                if (scope.data.endTime != null && scope.data.endTime != undefined && scope.data.endTime != '') {
+                    if (!scope.validateTime(scope.data.endTime)) {
+                        result = true;
+                    }
+                }
+
+                return result;
+            };
+        }
+    }
+
+    function getObjStr(field, value, exactMatch){
+        var result = '{"field":';
+        result = result.concat('"').concat(field).concat('", "value":"').concat(value).concat('", "exactMatch":').concat(exactMatch).concat('}');
+        return result;
+    }
+
+    function checkAnyFieldFilled(scope) {
+        var result = [];
+
+        try {
+
+            if (scope.data.paymentType != null && scope.data.paymentType != undefined && scope.data.paymentType != "0")
+                result.push(getObjStr("paymenttype", scope.data.paymentType.toString(), true));
+
+            if (scope.data.scheme != null && scope.data.scheme != undefined && scope.data.scheme != "0")
+                result.push(getObjStr("paymentscheme", scope.data.scheme.toString(), true));
+
+            if (scope.data.direction != null && scope.data.direction != undefined && scope.data.direction != "0")
+                result.push(getObjStr("direction", scope.data.direction.toString(), true));
+
+            if (scope.data.creditDebit != null && scope.data.creditDebit != undefined && scope.data.creditDebit != "0")
+                result.push(getObjStr("cdtdbtind", scope.data.creditDebit.toString(), true));
+
+            if (scope.data.paymentId != null && scope.data.paymentId != undefined && scope.data.paymentId != '')
+                result.push(getObjStr("paymentId", scope.data.paymentId.toString(), false));
+
+            if (scope.data.transactionId != null && scope.data.transactionId != undefined && scope.data.transactionId != '')
+                result.push(getObjStr("txid", scope.data.transactionId.toString(), false));
+
+            if (scope.data.settlementAmount != null && scope.data.settlementAmount != undefined && scope.data.settlementAmount != '')
+                result.push(getObjStr("intrbksttlamt", scope.data.settlementAmount.toString(), false));
+
+            if (scope.data.currency != null && scope.data.currency != undefined && scope.data.currency != '')
+                result.push(getObjStr("intrbksttlccy", scope.data.currency.toString(), false));
+
+            if (scope.data.debtorAgentName != null && scope.data.debtorAgentName != undefined && scope.data.debtorAgentName != '')
+                result.push(getObjStr("dbtragt_nm", scope.data.debtorAgentName.toString(), false));
+
+            if (scope.data.debtorAgentAccount != null && scope.data.debtorAgentAccount != undefined && scope.data.debtorAgentAccount != '')
+                result.push(getObjStr("dbtragt_acct", scope.data.debtorAgentAccount.toString(), false));
+
+            if (scope.data.debtorAgentBICFI != null && scope.data.debtorAgentBICFI != undefined && scope.data.debtorAgentBICFI != '')
+                result.push(getObjStr("dbtragt_bicfi", scope.data.debtorAgentBICFI.toString(), false));
+
+            if (scope.data.debtorAgentAddress != null && scope.data.debtorAgentAddress != undefined && scope.data.debtorAgentAddress != '')
+                result.push(getObjStr("dbtragt_pstladr", scope.data.debtorAgentAddress.toString(), false));
+
+            if (scope.data.debtorName != null && scope.data.debtorName != undefined && scope.data.debtorName != '')
+                result.push(getObjStr("dbtrnm", scope.data.debtorName.toString(), false));
+
+            if (scope.data.debtorAccount != null && scope.data.debtorAccount != undefined && scope.data.debtorAccount != '')
+                result.push(getObjStr("dbtracct", scope.data.debtorAccount.toString(), false));
+
+            if (scope.data.debtorBICFI != null && scope.data.debtorBICFI != undefined && scope.data.debtorBICFI != '')
+                result.push(getObjStr("dbtr_bicfi", scope.data.debtorBICFI.toString(), false));
+
+            if (scope.data.debtorAddress != null && scope.data.debtorAddress != undefined && scope.data.debtorAddress != '')
+                result.push(getObjStr("dbtrpstladr", scope.data.debtorAddress.toString(), false));
+
+            if (scope.data.creditorAgentName != null && scope.data.creditorAgentName != undefined && scope.data.creditorAgentName != '')
+                result.push(getObjStr("cdtragt_nm", scope.data.creditorAgentName.toString(), false));
+
+            if (scope.data.creditorAgentAccount != null && scope.data.creditorAgentAccount != undefined && scope.data.creditorAgentAccount != '')
+                result.push(getObjStr("cdtrAgt_acct", scope.data.creditorAgentAccount.toString(), false));
+
+            if (scope.data.creditorAgentBICFI != null && scope.data.creditorAgentBICFI != undefined && scope.data.creditorAgentBICFI != '')
+                result.push(getObjStr("cdtrAgt_bicfi", scope.data.creditorAgentBICFI.toString(), false));
+
+            if (scope.data.creditorAgentAddress != null && scope.data.creditorAgentAddress != undefined && scope.data.creditorAgentAddress != '')
+                result.push(getObjStr("cdtrAgt_pstladr", scope.data.creditorAgentAddress.toString(), false));
+
+            if (scope.data.creditorName != null && scope.data.creditorName != undefined && scope.data.creditorName != '')
+                result.push(getObjStr("cdtrnm", scope.data.creditorName.toString(), false));
+
+            if (scope.data.creditorAccount != null && scope.data.creditorAccount != undefined && scope.data.creditorAccount != '')
+                result.push(getObjStr("cdtracct", scope.data.creditorAccount.toString(), false));
+
+            if (scope.data.creditorBICFI != null && scope.data.creditorBICFI != undefined && scope.data.creditorBICFI != '')
+                result.push(getObjStr("cdtr_bicfi", scope.data.creditorBICFI.toString(), false));
+
+            if (scope.data.creditorAddress != null && scope.data.creditorAddress != undefined && scope.data.creditorAddress != '')
+                result.push(getObjStr("cdtrpstladr", scope.data.creditorAddress.toString(), false));
+
+
+        } catch (err) {
+            console.error('Error parsing fields. Error message: ' + err);
+        }
+
+        console.log('Result: ' + result);
+
+        var results = JSON.parse("[" + result + "]");
+
+        console.log('Result JSON: ' + JSON.stringify(result));
+
+        return results;
+    }
+
+    function doQuery(scope) {
+        var sqlString = '';
+
+        var fields = checkAnyFieldFilled(scope);
+
+        console.log('fields: ' + fields);
+
+        if (fields.length > 0) {
+            var and = false;
+            sqlString = "WHERE ";
+
+            for (i = 0; i < fields.length; i++) { 
+                var obj = fields[i];
+                if (and)
+                    sqlString = sqlString.concat(" AND ");
+
+
+                sqlString = sqlString.concat('UPPER(');
+                sqlString = sqlString.concat(obj.field);
+                sqlString = sqlString.concat(')');
+                if (!obj.exactMatch)
+                    sqlString = sqlString.concat(" LIKE UPPER('%");
+                else
+                    sqlString = sqlString.concat(" = UPPER('");
+
+                sqlString = sqlString.concat(obj.value);
+
+                if (!obj.exactMatch)
+                    sqlString = sqlString.concat("%");
+
+                sqlString = sqlString.concat("')");
+
+                and = true;
+            }
+        }
+
+        var queryDateTimes = addDateTimes(scope, and);
+        sqlString = sqlString.concat(queryDateTimes);
+
+        console.log("Query: " + sqlString);
+        return sqlString;
+    }
+
+    function addDateTimes(scope, and) {
+        console.log('Generating Query')
+        var sqlString = "";
+
+        if ((scope.data.startDate != null && scope.data.startDate != undefined && scope.data.startDate != '') ||
+            (scope.data.startTime != null && scope.data.startTime != undefined && scope.data.startTime != '') ||
+            (scope.data.endDate != null && scope.data.endDate != undefined && scope.data.endDate != '') ||
+            (scope.data.endTime != null && scope.data.endTime != undefined && scope.data.endTime != '')) {
+            console.log("Retrieving dates.");
+
+            if (!and) {
+                sqlString = sqlString.concat(" WHERE ");
+            }
+
+            var startDateFilled = false;
+            var startTimeFilled = false;
+            var endDateFilled = false;
+            var endTimeFilled = false;
+
+            var startDateTimeFilled = false;
+            var endDateTimeFilled = false;
+
+            var startTimeStr = "00:00:00";
+            var endTimeStr = "23:59:59";
+
+            var startDateTimeStr;
+            var endDateTimeStr;
+
+
+            if (scope.data.startDate != null && scope.data.startDate != undefined && scope.data.startDate != '') {
+                startDateFilled = true;
+            }
+            if (scope.data.startTime != null && scope.data.startTime != undefined && scope.data.startTime != '') {
+                startTimeFilled = true;
+            }
+            if (scope.data.endDate != null && scope.data.endDate != undefined && scope.data.endDate != '') {
+                endDateFilled = true;
+            }
+            if (scope.data.endTime != null && scope.data.endTime != undefined && scope.data.endTime != '') {
+                endTimeFilled = true;
+            }
+
+            if (startDateFilled || startTimeFilled || endDateFilled || endTimeFilled) {
+                if (startDateFilled && startTimeFilled) {
+                    startDateTimeStr = scope.data.startDate + " " + scope.data.startTime;
+                } else if(startDateFilled && !startTimeFilled) {
+                    startDateTimeStr = scope.data.startDate + " " + startTimeStr;
+                } else if (!startDateFilled && startTimeFilled) {
+                    startDateTimeStr =  scope.getActualDate() + " " + scope.data.startTime;
+                }
+
+                if (endDateFilled && endTimeFilled) {
+                    endDateTimeStr = scope.data.endDate + " " + scope.data.endTime;
+                } else if(endDateFilled && !endTimeFilled) {
+                    endDateTimeStr = scope.data.endDate + " " + endTimeStr;
+                } else if(!endDateFilled && endTimeFilled) {
+                    endDateTimeStr + scope.getActualDate() + scope.data.endTime;
+                }
+            }
+
+            if (startDateTimeStr != null && startDateTimeStr != undefined && startDateTimeStr != '') {
+                startDateTimeFilled = true;
+            }
+
+            if (endDateTimeStr != null && endDateTimeStr != undefined && endDateTimeStr != '') {
+                endDateTimeFilled = true;
+            }
+
+
+            if (startDateTimeFilled || endDateTimeFilled) {
+                if (and) {
+                    sqlString = sqlString + " AND ";
+                }
+
+                if (startDateTimeFilled && endDateTimeFilled) {
+                    sqlString = sqlString + "paymenttimestamp >= '" + startDateTimeStr + "' AND paymenttimestamp <= '" + endDateTimeStr+"'";
+                }else if (startDateTimeFilled) {
+                    sqlString = sqlString + "paymenttimestamp >= '" + startDateTimeStr+"'";                     
+                } else {
+                    sqlString = sqlString + "paymenttimestamp <= '" + endDateTimeStr+"'";                    
+                }
+            }
+        }
+
+        console.log('Query: ' + sqlString);
+        return sqlString;
+    }
+
+
+    function submit_search_exception() {
+        var scope = angular.element($("#submit-searchChapsException-container")).scope();
+
+        console.log('Submitting search exception');
+        
+        var query = doQuery(scope);
+
+        scope.z.angularBind('exceptionsQuery', query, '20180620-140301_810238412');
+        scope.z.runParagraph('20180620-140301_810238412');
+    }
+
+    
+</script>

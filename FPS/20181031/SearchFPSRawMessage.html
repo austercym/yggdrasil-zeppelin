@@ -1,0 +1,219 @@
+%angular
+<div  id="submit-searchFPSRowMessages-container">
+
+    <form name="searchFPSRowMessagesForm" id="post-searchFPSRowMessages-form">
+        <div class= "form-group">
+            <div class="row">
+                <!-- RowKey -->
+                <div class="col-xs-4 form-group" >
+                    <label for="rowKey">Payment Id: </label>
+                    <input type="text" name="rowKey" class="form-control" id="rowKey" ng-model="data.rowKey">
+                </div>
+            
+            </div>
+
+            <button type="submit" class="btn btn-primary" onclick="submit_search_row_message()">{{submit.text}}</button>
+        </div>
+        
+    </form>
+
+    <div class="clear-form-button">
+      <button class="btn" ng-click="clearForm()">Clear Form</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style media="screen" type="text/css">
+
+.searchFPSRowMessages-submit-status-container {
+    background-color: #def9db;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.searchFPSRowMessages-submit-status-container-failed{
+    background-color: #900C3F;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    color: #f2f2f2;
+}
+
+.result-header{
+    margin-bottom: 15px;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+#submit-searchFPSRowMessages-container{
+    margin-top:20px; 
+    margin-bottom:20px;
+    width: 98%;
+}
+
+
+.clear-form-button{
+    display: inline;
+    float: right;
+}
+
+.invalid-feedback{
+    width: 100%;
+    margin-top: .55rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+</style>
+
+
+
+
+
+<script>
+
+    angular.element(document).ready(function () {
+        console.log('init search fps row message');
+        init_searchFPSRowMessages();
+    });
+
+    function init_searchFPSRowMessages() {
+        var scope = angular.element($("#submit-searchFPSRowMessages-container")).scope();
+        if (typeof(scope.result)=== "undefined") {
+            scope.result = {
+                text: "",
+                payment: "",
+                success: false
+            };
+
+            show = false;
+            scope.submit = {
+                inprogress: false,
+                text: 'Search Row Message'
+            };
+
+            scope.data = {};
+
+            scope.generateInputValues = function(scope) {
+                console.log('Initializing input values');
+                scope.data.direction = "0";
+            };
+
+            scope.generateInputValues(scope);
+
+            scope.clearForm = function(){
+                var scope = angular.element($("#submit-searchFPSRowMessages-container")).scope();
+                scope.data = {};
+                scope.generateInputValues(scope);
+            };
+        }
+    }
+
+    function getObjStr(field, value, exactMatch){
+        var result = '{"field":';
+        result = result.concat('"').concat(field).concat('", "value":"').concat(value).concat('", "exactMatch":').concat(exactMatch).concat('}');
+        return result;
+    }
+
+    function checkAnyFieldFilled(scope) {
+        var result = [];
+
+        try {
+
+            if (scope.data.rowKey != null && scope.data.rowKey != undefined && scope.data.rowKey != '')
+                result.push(getObjStr("rowkey", scope.data.rowKey.toString(), false));
+
+        } catch (err) {
+            console.error('Error parsing fields. Error message: ' + err);
+        }
+
+        console.log('Result: ' + result);
+
+        var results = JSON.parse("[" + result + "]");
+
+        console.log('Result JSON: ' + JSON.stringify(result));
+
+        return results;
+    }
+
+    function doQuery(scope) {
+        var sqlString = '';
+
+        var fields = checkAnyFieldFilled(scope);
+
+        console.log('fields: ' + fields);
+
+        if (fields.length > 0) {
+            var and = false;
+            sqlString = "WHERE ";
+
+            for (i = 0; i < fields.length; i++) { 
+                var obj = fields[i];
+                if (and)
+                    sqlString = sqlString.concat(" AND ");
+
+
+                sqlString = sqlString.concat('UPPER(');
+                sqlString = sqlString.concat(obj.field);
+                sqlString = sqlString.concat(')');
+                if (!obj.exactMatch)
+                    sqlString = sqlString.concat(" LIKE UPPER('%");
+                else
+                    sqlString = sqlString.concat(" = UPPER('");
+
+                sqlString = sqlString.concat(obj.value);
+
+                if (!obj.exactMatch)
+                    sqlString = sqlString.concat("%");
+
+                sqlString = sqlString.concat("')");
+
+                and = true;
+            }
+        }
+
+        console.log("Query: " + sqlString);
+        return sqlString;
+    }
+
+
+    function submit_search_row_message() {
+        var scope = angular.element($("#submit-searchFPSRowMessages-container")).scope();
+
+        console.log('Submitting search row message');
+        
+        var query = doQuery(scope);
+
+        scope.z.angularBind('queryRawMessages', query, '20171204-093003_1765612771');
+        scope.z.runParagraph('20171204-093003_1765612771');
+    }
+
+    
+</script>

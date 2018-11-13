@@ -1,0 +1,133 @@
+%angular
+<div id="return-fp"> 
+    <div ng-show="result.show" ng-class="{'fp-submit-status-container-failed': !result.success, 'fp-submit-status-container': result.success}">
+        <div class="result-header">{{result.text}}</div>
+        <div class="result-details row" ng-show="result.show">
+            <div class="col-xs-3">
+                <label>PaymentId: </label>
+                <div>{{result.paymentId}}</div>
+            </div>
+            <div class="col-xs-3">
+                <label>Status: </label>
+                <div>{{result.txSts}}</div>
+            </div>
+            <div class="col-xs-3"> 
+                <label>Status Reason: </label>
+                <div>{{result.stsRsn}}</div>
+            </div>
+        </div>
+    </div>
+
+
+    <form style="width:90%" name="fpReturnForm" id="return-fp-form">
+    
+    <div class= "form-group">
+            <div class="row">
+            <!-- Payment Return Id -->
+                <div class="col-xs-6 form-group" ng-class="{'has-error': !fpReturnForm.paymentReturnId.$valid}">
+                    <label for="paymentReturnId">Return Payment Id: </label>
+                    <input type="text" name="paymentReturnId" class="form-control" id="paymentReturnId" ng-model="data.paymentReturnId" ng-maxlength="255">
+                    <div ng-show="!fpReturnForm.paymentReturnId.$valid">
+                        Payment Return Id must be present for Return payment type and must not be present for Single Immediate Payment type.
+                    </div>
+                </div>
+            <!-- Payment Return Code -->
+                <div class="col-xs-6 form-group" ng-class="{'has-error': !fpReturnForm.paymentReturnCode.$valid && fpReturnForm.paymentReturnCode.$dirty }">
+                    <label for="paymentReturnCode">Payment Return Code: </label>
+                    <select class="form-control" ng-model="data.paymentReturnCode">
+                        <option selected value="00000001">Unknown Beneficiary Sort Code or Account Number</option>
+                        <option value="00000002">Beneficiary Account Closed</option>
+                        <option value="00000003">Beneficiary Account Stopped</option>
+                        <option value="00000004">Beneficiary Deceased</option>
+                        <option value="00000005">Reference Information Field Needed To indentify Account</option>
+                        <option value="00000006">Beneficiary Name Does Not Match Beneficiary Account Number</option>
+                        <option value="00000007">Return Requested By Sender Of original Payment</option>
+                        <option value="00000008">Account Is Not In Quoted Currency</option>
+                        <option value="00000009">Beneficiary Not Expecting Funds/Instructed Return</option>
+                        <option value="00000010">Terms and Conditions of Account Do Not Permit Crediting Those Funds</option>
+                        <option value="00000011">Sending FPS Institution Action Required</option>
+                        <option value="00000012">Account Transferred</option>
+                        <option value="00000013">Payment Cannot be Applied Because of Beneficiary Sensitivities</option>
+                        <option value="00000014">Other</option>
+                    </select>
+                </div>
+            </div> 
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="return_fp()" ng-disabled="submit.inprogress"> {{submit.text}}</button>
+    </form>
+</div>
+
+
+<script>
+function init_send_return(){
+    console.log('init return fp')
+    var scope = angular.element($("#return-fp")).scope();
+ 
+    scope.submit = {
+        text: "Return Payment"
+    }
+
+    if (typeof(scope.result)=== "undefined"){
+        scope.result = {
+            text: "",
+            paymentId: "",
+            txSts: "",
+            stsRsn: "",
+            success: false,
+            show: false
+        }
+        scope.submit = {
+            inprogress: false,
+            text: 'Return Payment'
+        }
+        scope.data = {
+            paymentReturnId: "",
+            paymentReturnCode: "00000001"
+        }
+    }
+
+    scope.return_fp = function(){
+        var scope = angular.element($("#return-fp")).scope();
+        var data = JSON.stringify(
+            {
+                'paymentType': "RTN",
+                'returnedPaymentId':scope.data.paymentReturnId,
+                'paymentReturnCode':  scope.data.paymentReturnCode,
+            });
+        do_ajax_query(scope, data, "sendReturn");
+    }
+}
+</script>
+<style>
+
+.fp-submit-status-container {
+    background-color: #def9db;
+    margin-left: 0px;
+    margin-top: 20px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.fp-submit-status-container-failed{
+    background-color: #900C3F;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    color: #f2f2f2;
+}
+
+.result-header{
+    margin-bottom: 15px;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+#return-fp{
+    width: 90%;
+    margin-top: 20px;
+}
+</style>
